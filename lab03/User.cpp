@@ -38,6 +38,7 @@ void List:: push_back(string x)
 {
 	if (_size<capacity){
 		items[_size++] = x;
+		cout << "hi" << endl;
 		}
 	else{
 		capacity=capacity*2;
@@ -67,7 +68,6 @@ public:
 	~User();
 	void setAge(int age);
 	void setName(string name);
-	void printUsers();
 	int getAge();
 	string getName();
 	void addFriend(string s);
@@ -77,24 +77,34 @@ private:
 	int _age;
 	List friends;
 };
-class User{
 
-public:
-	User();
-	User(string name, int age);
-	User(int i);
-	~User();
-	void setAge(int age);
-	void setName(string name);
-	int getAge();
-	string getName();
-	void addFriend(string s);
+int main(int argc, char *argv[])
+{
+		vector<User*> userList;
+		int age;
+		string name;
+		cout << "Enter first name, space, then age of each person. When finished, type done where you would type the next name." << endl;
+		do {
+			cin >> name >> age;
+			if (name!="done"){
+			User* i= new User(name, age);
+			userList.push_back(i);
+			}
+		}
+		while(name!="done");
+		
+		cout << "Enter two names separated by a space, the first being a User and the second being the friend of the User that you want to add. When finished, type done where you would type the next name." << endl;
+		string user, newFriend;
+		while (user != "done"){
+			cin >> user >> newFriend;
+		for (int i=0; i<userList.size(); i++){
+			if (user == (*userList.at(i)).getName()){
+				(*userList[i]).addFriend(newFriend);
 
-private:
-	string _name;
-	int _age;
-	List friends;
-};
+				}
+			}
+		}
+}
 User::User()
 {
 	List *friends = new List();

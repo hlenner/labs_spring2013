@@ -38,7 +38,6 @@ void List:: push_back(string x)
 {
 	if (_size<capacity){
 		items[_size++] = x;
-		cout << "hi" << endl;
 		}
 	else{
 		capacity=capacity*2;
@@ -68,6 +67,7 @@ public:
 	~User();
 	void setAge(int age);
 	void setName(string name);
+	void printUsers();
 	int getAge();
 	string getName();
 	void addFriend(string s);
@@ -100,9 +100,11 @@ int main(int argc, char *argv[])
 		for (int i=0; i<userList.size(); i++){
 			if (user == (*userList.at(i)).getName()){
 				(*userList[i]).addFriend(newFriend);
-
 				}
 			}
+		}
+		for(int i=0; i<userList.size(); i++){
+			(*userList[i]).printUsers();
 		}
 }
 User::User()
@@ -141,4 +143,14 @@ void User:: setAge(int age)
 void User:: addFriend(string s)
 {
 	friends.push_back(s);
+}
+void User:: printUsers()
+{
+		cout <<"User name: " << _name << endl;
+		cout << "User age: " << _age << endl;
+		cout << "User friends: ";
+		for(int x=0; x<friends.size(); x++){
+		cout << friends.at(x) << " ";
+	}
+	cout << endl;
 }

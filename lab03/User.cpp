@@ -38,7 +38,6 @@ void List:: push_back(string x)
 {
 	if (_size<capacity){
 		items[_size++] = x;
-		cout << "hi" << endl;
 		}
 	else{
 		capacity=capacity*2;
@@ -78,3 +77,58 @@ private:
 	int _age;
 	List friends;
 };
+class User{
+
+public:
+	User();
+	User(string name, int age);
+	User(int i);
+	~User();
+	void setAge(int age);
+	void setName(string name);
+	int getAge();
+	string getName();
+	void addFriend(string s);
+
+private:
+	string _name;
+	int _age;
+	List friends;
+};
+User::User()
+{
+	List *friends = new List();
+}
+User::User(int i)
+{
+	
+}
+User::User(string name, int age)
+{
+	_name = name;
+	_age = age;
+}
+User::~User()
+{
+
+}
+string User:: getName()
+{
+	return _name;
+}
+int User:: getAge()
+{
+	return _age;
+}
+void User:: setName(string name)
+{
+	_name=name;
+}
+void User:: setAge(int age)
+{
+	_age=age;
+}
+void User:: addFriend(string s)
+{
+	friends.push_back(s);
+}

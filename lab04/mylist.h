@@ -1,3 +1,5 @@
+#ifndef MYLIST_H
+#define MYLIST_H
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -8,59 +10,58 @@
 const int DEFAULT_LIST_SIZE=10;
 
 using namespace std;
-
-class List{
+template <typename T>
+class MyList{
 
 public:
-	List();
-	~List();
-	void push_back(string x);
+	MyList();
+	~MyList();
+	void push_back(T x);
 	int size() const;
-	string at(int loc) const;
-	bool operator==(const List &lst);
-	
+	T at(int loc) const;
 	
 private:
-	string *items;	
+	T *items;	
 	int _size;
 	int capacity;
 };
-
-List::List()
+#endif
+template <typename T>
+MyList<T>::MyList()
 {
 	_size=0;
 	capacity=DEFAULT_LIST_SIZE;
-	items= new string[capacity];
+	items= new T[capacity];
 }
-List:: ~List()
+template <typename T>
+MyList<T>:: ~MyList()
 {
 	delete [] items;
 }
-bool List:: operator==(const List &lst)
-{
-	
-}
-void List:: push_back(string x)
+template <typename T>
+void MyList<T>:: push_back(T x)
 {
 	if (_size<capacity){
 		items[_size++] = x;
 		}
 	else{
 		capacity=capacity*2;
-		string* moreitems= new string[capacity];
+		T* moreitems= new T[capacity];
 		for (int i = 0; i<_size; i++){
 			moreitems[i]=items[i];
 			}
 			moreitems[_size] = x;
 			_size++;
-			delete[] items;
+			delete []items;
 	}
 }
-int List:: size() const
+template <typename T>
+int MyList<T>:: size() const
 {
 	return _size;
 }
-string List:: at(int loc) const
+template <typename T>
+T MyList<T>:: at(int loc) const
 {
 	return items[loc];
 }

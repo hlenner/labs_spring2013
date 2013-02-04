@@ -20,9 +20,8 @@ public:
 	void push_back(T x);
 	int size() const;
 	T at(int loc) const;
-	//bool remove(T val);
-	//T pop(int loc);
-	//mylist operator[](T i);
+	bool remove(T val);
+	T pop(int loc);
 	
 private:
 	T *items;	
@@ -69,18 +68,26 @@ int mylist<T>:: size() const
 template <typename T>
 T mylist<T>:: at(int loc) const
 {
+if (loc > _size){
+	throw loc;
+	}
+else{
 	return items[loc];
+	}
 }
-/*template <typename T>
+template <typename T>
 bool mylist<T>::remove(T val)
 {
-	for(int i=0; i<items.size(); i++){
-		if (items.at(i)==val){
-			for(int i=items.size(); i>val;i++){
-				items.at(i)=items.at(i+1);
+	for(int i=0; i<_size; i++)
+	{
+		if (items[i]==val)
+		{
+			for(int j=i; j <_size;j++)
+			{
+				items[j]=items[j+1];
+				}
 				_size--;
 				return true;
-				}
 		}
 	}
 	return false;
@@ -88,16 +95,18 @@ bool mylist<T>::remove(T val)
 template <typename T>
 T mylist<T>::pop(int loc)
 {
+	if (loc > _size)
+	{
+		throw loc;
+	}
+	else{
 	T value;
-	value = items.at(loc);
-	for (int i=loc; i<items.size()-1 ; i++){//SHOULD THIS BE SIZE OR SIZE-1??
-				items.at(i)=items.at(i+1);
+	value = items[loc];
+	for (int i=loc; i<_size ; i++){//SHOULD THIS BE SIZE OR SIZE-1??
+				items[i]=items[i+1];
 				}
 		_size--;
 	return value;
+	}
 }
-template <typename T>
-T mylist<T>::operator[](int i)
-{
-	return .at(i);
-}*/
+

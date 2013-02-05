@@ -27,10 +27,10 @@ int main(int argc, char *argv[])
 	my_str_list.push_back("Hello");
 	my_str_list.push_back("Sam");
 	
-	int x = my_int_list[2];
-	cout << x << endl;
 	
 	
+	my_int_list[0]=3;
+	cout << my_int_list[0]<< endl;
 	
 	
 	/*for (int i=0; i<my_int_list.size(); i++){

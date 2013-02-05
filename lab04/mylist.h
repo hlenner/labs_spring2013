@@ -22,8 +22,8 @@ public:
 	T& at(int loc) const;
 	bool remove(T val);
 	T pop(int loc);
-	T operator[](int rhs);
-	//T& operator[](int lhs);
+	//T operator[](int rhs);
+	T& operator[](int lhs);
 	
 	
 private:
@@ -113,7 +113,7 @@ T mylist<T>::pop(int loc)
 	}
 }
 template <typename T>
-T mylist<T>::operator[](int rhs)
+T& mylist<T>::operator[](int lhs)
 {
-	return items[rhs];
+	return items[lhs];
 }

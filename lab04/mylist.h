@@ -19,9 +19,12 @@ public:
 	~mylist();
 	void push_back(T x);
 	int size() const;
-	T at(int loc) const;
+	T& at(int loc) const;
 	bool remove(T val);
 	T pop(int loc);
+	T operator[](int rhs);
+	//T& operator[](int lhs);
+	
 	
 private:
 	T *items;	
@@ -66,7 +69,7 @@ int mylist<T>:: size() const
 	return _size;
 }
 template <typename T>
-T mylist<T>:: at(int loc) const
+T& mylist<T>:: at(int loc) const
 {
 if (loc > _size){
 	throw loc;
@@ -102,11 +105,15 @@ T mylist<T>::pop(int loc)
 	else{
 	T value;
 	value = items[loc];
-	for (int i=loc; i<_size ; i++){//SHOULD THIS BE SIZE OR SIZE-1??
+	for (int i=loc; i<_size ; i++){
 				items[i]=items[i+1];
 				}
 		_size--;
 	return value;
 	}
 }
-
+template <typename T>
+T mylist<T>::operator[](int rhs)
+{
+	return items[rhs];
+}

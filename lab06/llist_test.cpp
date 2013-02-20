@@ -23,10 +23,27 @@ cout << "Testing Linked List" << endl;
     cout << mylist.peek_front() << endl;
     mylist.pop_front();
   }
-  cout << "End testing linkedlist" << endl;
+
   cout << endl;
+  cout<< "Testing Queue" << endl;
   
-  
-  
+  Queue<int> myq;
+  myq.push_back(5);
+  myq.push_back(6);
+  myq.push_back(7);
+  myq.push_back(8);
+  cout << "Front item is: " << myq.front() << endl;
+  cout << "Back item is: " << myq.back() << endl;
+  cout << "Size: " << myq.size() << endl;
+  myq.pop_front();
+  cout << "Popped first value, new first value is: " << myq.front() << endl;
+  cout << "New size: " << myq.size() << endl;
+  while(!mylist.empty()){
+    cout << mylist.peek_front() << endl;
+    mylist.pop_front();
+  }
+
+  cout << endl;
+
   return 0;
 }

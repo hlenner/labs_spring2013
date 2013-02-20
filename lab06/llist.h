@@ -16,12 +16,13 @@ class LList {
   ~LList();
   bool empty() const;
   int size() const;
-  void push_back( T new_val);
+  void push_back(T new_val);
   void pop_front();
   T& peek_front() const;
   T& at(int loc) const;
   bool remove(const T& val);
   void clear();
+  void pop_back();
   //void insert(int loc, T val);
 
  private:
@@ -127,23 +128,15 @@ else{
 throw std:: invalid_argument("bad location");
 }
 }
-/*template <typename T>
-T& LList<T>::peek_back() const
+template <typename T>
+void LList<T>::pop_back()
 {
-
-if (head_!=NULL){
-return head_->val;
-}
-else {
 	Item<T> *temp=head_;
 	while(temp->next!=NULL){
 		temp=temp->next;
 	}
-	return temp->val;
+	remove(temp->val);
  }
-}
-*/
-
 template <typename T>
 bool LList<T>::remove(const T& val)
 {
@@ -177,8 +170,6 @@ Item<T> *node = getNodeAt(loc);
 return node->val;
 
 }
-
-
 template <typename T>
 void LList<T>::clear()
 {

@@ -13,7 +13,8 @@ class Queue:private LList<T> {
 	T& front();
 	T& back();
 	bool empty() const;
-       
+       	void print();
+       	T& at(int loc) const;
        private:
         
 };
@@ -35,7 +36,7 @@ void Queue<T>:: push_back(const T &val)
 template<typename T>
 int Queue<T>:: size() const
 {
-	LList<T>::size();
+	return LList<T>::size();
 }
 template<typename T>
 void Queue<T>:: pop_front()
@@ -45,17 +46,22 @@ void Queue<T>:: pop_front()
 template<typename T>
 T& Queue<T>:: front() 
 {
-	LList<T>::peek_front();
+	return LList<T>::peek_front();
 }
 template<typename T>
 T& Queue<T>:: back() 
 {
-	LList<T>::at(size()-1);
+	return LList<T>::at(size()-1);
 }
 template<typename T>
 bool Queue<T>:: empty() const
 {
-	LList<T>:: empty();
+	return LList<T>:: empty();
+}
+template<typename T>
+T& Queue<T>:: at(int loc) const
+{
+	return LList<T>:: at(loc);
 }
 
 #endif

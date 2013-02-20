@@ -1,6 +1,7 @@
 #include <iostream>
 #include "llist.h"
 #include "Queue.h"
+#include "Stack.h"
 
 using namespace std;
 
@@ -38,12 +39,23 @@ cout << "Testing Linked List" << endl;
   myq.pop_front();
   cout << "Popped first value, new first value is: " << myq.front() << endl;
   cout << "New size: " << myq.size() << endl;
-  while(!mylist.empty()){
-    cout << mylist.peek_front() << endl;
-    mylist.pop_front();
+  for (int i=0; i<myq.size(); i++){
+  	cout << myq.at(i) << " "  ;
   }
-
   cout << endl;
-
+  cout << endl;
+  cout << "Testing Stack" << endl;
+  Stack<int> myStack;
+  
+  myStack.push(5); 
+  myStack.push(6);
+  myStack.push(7);
+  myStack.push(8);
+  myStack.pop();
+  cout << "Top value is: " << myStack.top() << endl;
+  for (int i=0; i<myStack.size(); i++){
+  	cout << myStack.at(i) << " "  ;
+  }
+  
   return 0;
 }

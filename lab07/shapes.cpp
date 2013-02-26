@@ -2,6 +2,7 @@
 #include <cmath>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 class Shape 
@@ -20,11 +21,44 @@ class RightTriangle : public Shape
   ~RightTriangle() { }
   double getArea() { return 0.5*_b*_h; }
   double getPerimeter() { return sqrt(_b*_b + _h*_h) + _h + _b; }
-  string getType() { return "Right Triangle";}
+  string getType() { return "Right Triangle"; }
 private:
   double _b, _h;
 };
+class Circle : public Shape 
+{
+ public:
+  Circle(double r) : _r(r) { }
+  ~Circle() { }
+  double getArea() { return pow(3.14159*_r, 2); }
+  double getPerimeter() { return 2*3.14159*_r; }
+  string getType() { return "Circle"; }
+private:
+  double _r;
 
+};
+class Rectangle : public Shape 
+{
+ public:
+  Rectangle(double b, double h) : _b(b), _h(h) { }
+  ~Rectangle() { }
+  double getArea() { return _b*_h; }
+  double getPerimeter() { return _b+_b+_h+_h; }
+  string getType() { return "Rectangle"; }
+private:
+  double _b, _h;
+};
+class Square : public Shape 
+{
+ public:
+  Square(double s) : _s(s) { }
+  ~Square() { }
+  double getArea() { return pow(_s, 2); }
+  double getPerimeter() { return _s*4; }
+  string getType() { return "Square"; }
+private:
+  double _s;
+};
 
 int main()
 {
@@ -51,26 +85,23 @@ int main()
     else if(selection == 2){
       double b, h;
       cin >> b >> h;
-      // Add the rest of the code to allocate a new rectangle
-      //  and add it to the shapeList
+      shapeList.push_back(new Rectangle(b, h));
 
     }
     // Square case
     else if(selection == 3){
       double s;
       cin >> s;
-      // Add the rest of the code to allocate a new square
-      //  and add it to the shapeList
-
+      shapeList.push_back(new Square(s));
+     
     }
     // Circle case
     else if(selection == 4){
       double r;
       cin >> r;
-      // Add the rest of the code to allocate a new circle
-      //  and add it to the shapeList
-
+      shapeList.push_back(new Circle(r));
     }
+   
   }
 
   for (vector<Shape *>::iterator it = shapeList.begin() ; 

@@ -20,7 +20,7 @@ class RightTriangle : public Shape
   ~RightTriangle() { }
   double getArea() { return 0.5*_b*_h; }
   double getPerimeter() { return sqrt(_b*_b + _h*_h) + _h + _b; }
-  string getType() { return "Right Triangle"; }
+  string getType() { return "Right Triangle";}
 private:
   double _b, _h;
 };

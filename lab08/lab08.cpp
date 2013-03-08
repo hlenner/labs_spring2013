@@ -229,9 +229,9 @@ int main() {
   
   cout << "finish linked list populate" << endl;
   start = clock();
-  selectionSort();
+  //selectionSort();
   // Add your call to either selection or merge sort here.
-  //mergeSort(0, MAXSIZE);
+  mergeSort(0, MAXSIZE);
 
   finish = clock();
   duration = (double)(finish - start) / CLOCKS_PER_SEC;
